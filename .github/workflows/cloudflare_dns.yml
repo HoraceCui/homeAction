@@ -24,10 +24,10 @@ on:
         type: string
         default: '::1'
         required: true
-      #proxied:
-      #  type: bool
-      #  default: True
-      #  required: true
+      proxied:
+        type: bool
+        default: True
+        required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -46,5 +46,5 @@ jobs:
           pwd
           cd ${GITHUB_WORKSPACE}
           pwd
-          python3 scripts/cloudflare_dns.py ${{ secrets.CLOUFLARETOKEN_DNS }} ${{ secrets.ZONE_ID_C }} ${{ github.event.inputs.record_id }} ${{ github.event.inputs.record_name }} ${{ github.event.inputs.record_type }} ${{ github.event.inputs.record_content }} # ${{ github.event.inputs.proxied }}
+          python3 scripts/cloudflare_dns.py ${{ secrets.CLOUFLARETOKEN_DNS }} ${{ secrets.ZONE_ID_C }} ${{ github.event.inputs.record_id }} ${{ github.event.inputs.record_name }} ${{ github.event.inputs.record_type }} ${{ github.event.inputs.record_content }}  ${{ github.event.inputs.proxied }}
           
