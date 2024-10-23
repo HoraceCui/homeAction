@@ -37,30 +37,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
       
-      - name: Send mail
-        uses: dawidd6/action-send-mail@v3.12.0
-        with:
-          server_address: smtp.qq.com
-          # Server port, default 25:
-          server_port: 587
-          # Optional whether this connection use TLS (default is true if server_port is 465)
-          # secure: true
-          # Optional (recommended) mail server username:
-          username: ${{secrets.QQ_UASERNAME}}
-          # Optional (recommended) mail server password:
-          password: ${{secrets.QQ_PASSWORD}}
-          # Required mail subject:
-          subject: Test Email
-          # Required recipients' addresses:
-          to: ${{secrets.QQ_UASERNAME}}
-          # Required sender full name (address can be skipped):
-          from: ${{secrets.QQ_UASERNAME}}
-          # Optional plain body:
-          # body: 'name is \n\n${{ github.event.inputs.hostName }}\n\n address is \n\n${{ github.event.inputs.hostIP }}\n\n'
-          body: |
-            name is 
-            ${{ github.event.inputs.hostName }}
-            address is 
-            ${{ github.event.inputs.hostIP }}
-          # Optional HTML body read from file:
+      - name: show list_dns_records
+        run: |
+          pwd
+          cd ${GITHUB_WORKSPACE}
+          pwd
+          python3 scripts/list_dns_records.py ${{ secrets.CLOUFLARETOKEN_DNS }} ${{ secrets.ZONE_ID_C }}
           
