@@ -14,7 +14,7 @@ def list_dns_records(api_token, zone_id):
     if response.status_code == 200:
         dns_records = response.json()
         for record in dns_records['result']:
-            print(f"Type: {record['type']}, Name: {record['name']}, Content: {record['content']}")
+            print(f"Type: {record['type']}, Name: {record['name']}, Content: {record['content']}, ID: {record['id']}")
     else:
         print(f"Error: {response.status_code} - {response.text}")
 
