@@ -44,6 +44,11 @@ jobs:
           # Required sender full name (address can be skipped):
           from: ${{secrets.QQ_UASERNAME}}
           # Optional plain body:
-          body: 'name is \n\n${{ vars.MESSAGE1 }}\n\n address is \n\n${{ vars.MESSAGE2 }}\n\n'
+          # body: 'name is \n\n${{ vars.MESSAGE1 }}\n\n address is \n\n${{ vars.MESSAGE2 }}\n\n'
+          body: |
+            name is 
+            ${{ vars.MESSAGE1 }}
+            address is 
+            ${{ vars.MESSAGE2 }}
           # Optional HTML body read from file:
           
