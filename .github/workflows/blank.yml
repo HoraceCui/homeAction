@@ -12,6 +12,17 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      hostName:
+        description: 'hostName'
+        type: string
+        default: 'inithostName'
+        required: true
+      hostIP:
+        description: 'hostIP'
+        type: string
+        default: '::1'
+        required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -44,11 +55,11 @@ jobs:
           # Required sender full name (address can be skipped):
           from: ${{secrets.QQ_UASERNAME}}
           # Optional plain body:
-          # body: 'name is \n\n${{ vars.MESSAGE1 }}\n\n address is \n\n${{ vars.MESSAGE2 }}\n\n'
+          # body: 'name is \n\n${{ github.event.inputs.hostName }}\n\n address is \n\n${{ github.event.inputs.hostIP }}\n\n'
           body: |
             name is 
-            ${{ vars.MESSAGE1 }}
+            ${{ github.event.inputs.hostName }}
             address is 
-            ${{ vars.MESSAGE2 }}
+            ${{ github.event.inputs.hostIP }}
           # Optional HTML body read from file:
           
