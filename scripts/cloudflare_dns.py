@@ -42,6 +42,6 @@ if __name__ == "__main__":
         record_type = sys.argv[5]
         record_content = sys.argv[6]
         proxied = str_to_bool(sys.argv[7])
-        result = update_dns_record(api_token, zone_id, record_id, record_name, record_type, record_content，proxied)
+        result = update_dns_record(api_token, zone_id, record_id, record_name, record_type, record_content, proxied)
 
         print(result)
