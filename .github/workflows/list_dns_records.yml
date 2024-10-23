@@ -24,5 +24,5 @@ jobs:
           pwd
           cd ${GITHUB_WORKSPACE}
           pwd
-          python3 list_dns_records.py ${{ secrets.CLOUFLARETOKEN_DNS }} ${{ secrets.ZONE_ID_C }}
+          python3 scripts/list_dns_records.py ${{ secrets.CLOUFLARETOKEN_DNS }} ${{ secrets.ZONE_ID_C }}
           
