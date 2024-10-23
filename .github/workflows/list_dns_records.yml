@@ -19,7 +19,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
       
-      - name: npm install, build and test
+      - name: show list_dns_records
         run: |
           pwd
           cd ${GITHUB_WORKSPACE}
