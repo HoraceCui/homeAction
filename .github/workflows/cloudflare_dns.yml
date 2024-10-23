@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       record_id:
-        type: record_name
+        type: string
         default: '::1'
         required: true
       record_name:
@@ -23,6 +23,10 @@ on:
       record_content:
         type: string
         default: '::1'
+        required: true
+      proxied:
+        type: string
+        default: 'True'
         required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -42,5 +46,5 @@ jobs:
           pwd
           cd ${GITHUB_WORKSPACE}
           pwd
-          python3 scripts/cloudflare_dns.py ${{ secrets.CLOUFLARETOKEN_DNS }} ${{ secrets.ZONE_ID_C }} 
+          python3 scripts/cloudflare_dns.py ${{ secrets.CLOUFLARETOKEN_DNS }} ${{ secrets.ZONE_ID_C }} ${{ github.event.inputs.record_id }} ${{ github.event.inputs.record_name }} ${{ github.event.inputs.record_type }} ${{ github.event.inputs.record_content }} ${{ github.event.inputs.proxied }}
           
