@@ -28,7 +28,7 @@ def update_dns_record(api_token,zone_id, record_id, record_name, record_type, re
 
 # Example usage when calling the module
 if __name__ == "__main__":
-    if len(sys.argv) != 8:
+    if len(sys.argv) != 7:
         print(len(sys.argv))
         print("Usage: python update_dns_record.py api_token, zone_id, record_id, record_name, record_type, record_content")
     else:
@@ -39,7 +39,7 @@ if __name__ == "__main__":
         record_name = sys.argv[4]
         record_type = sys.argv[5]
         record_content = sys.argv[6]
-        proxied = sys.argv[7]
-        result = update_dns_record(api_token, zone_id, record_id, record_name, record_type, record_content,proxied)
+        #proxied = sys.argv[7]
+        result = update_dns_record(api_token, zone_id, record_id, record_name, record_type, record_content)
 
         print(result)
