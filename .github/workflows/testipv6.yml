@@ -1,0 +1,22 @@
+name: Test IPv6 Connectivity
+
+on:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  ipv6-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the code
+      uses: actions/checkout@v3
+
+    - name: Install IPv6 utilities
+      run: sudo apt-get update && sudo apt-get install -y iputils-ping net-tools
+
+    - name: Test IPv6 Connectivity
+      run: |
+        echo "Checking IPv6 connectivity..."
+        ping6 -c 4 google.com || (echo "IPv6 connectivity failed" && exit 1)
